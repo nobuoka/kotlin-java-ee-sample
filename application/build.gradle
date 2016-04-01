@@ -1,0 +1,32 @@
+buildscript {
+    ext.kotlin_version = '1.0.1-2'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'war'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    providedCompile 'javax:javaee-api:7.0'
+    compile 'org.apache.derby:derby:10.10.+'
+
+    providedCompile 'javax.mvc:javax.mvc-api:1.0-edr2'
+    compile 'org.glassfish.ozark:ozark:1.0.0-m02'
+}
+
+war.archiveName = 'app.war'
