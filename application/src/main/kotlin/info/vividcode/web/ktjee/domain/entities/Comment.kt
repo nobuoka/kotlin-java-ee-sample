@@ -25,3 +25,6 @@ class Comment(text: String) : Serializable {
     var text: String = text
 
 }
+
+fun EntityManager.createNamedQueryCommentFindAll() =
+        this.createNamedQuery("Comment.findAll", Comment::class.java)

@@ -1,6 +1,7 @@
 package info.vividcode.web.ktjee.infrastructure
 
 import info.vividcode.web.ktjee.domain.entities.Comment
+import info.vividcode.web.ktjee.domain.entities.createNamedQueryCommentFindAll
 import info.vividcode.web.ktjee.domain.repositories.CommentRepository
 import javax.enterprise.context.ApplicationScoped
 import javax.persistence.EntityManager
@@ -17,7 +18,7 @@ open class JpaCommentRepository() : CommentRepository {
     }
 
     override fun getAll(): List<Comment>? {
-        return mEntityManager.createNamedQuery("Comment.findAll", Comment::class.java).resultList
+        return mEntityManager.createNamedQueryCommentFindAll().resultList
     }
 
 }
